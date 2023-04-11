@@ -1,3 +1,3 @@
-git+https://github.com/javipalanca/spade@develop
+spade==3.2.3
 spade_pubsub==0.1.3
 spade_artifact==0.1.1

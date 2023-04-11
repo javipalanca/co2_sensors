@@ -1,14 +1,33 @@
+import asyncio
 import spade
 
-from agent import Agent
+from agent import Agent, CO2Sensor
+
+coords = [[40.97293341495515, -5.669924099455386], [40.970738445144235, -5.650435617283819],
+		  [40.97686249953395, -5.652337807992581], [40.96241857570391, -5.664038075374123],
+		  [40.966565091267455, -5.673477248138028], [40.962852210444595, -5.6483180842300555],
+		  [40.973285687260386, -5.662064103883381], [40.967649104663536, -5.663571500294239],
+		  [40.961497092420245, -5.653486300496439], [40.97783796013269, -5.655998627848163],
+		  [40.97802763135155, -5.670462455316368], [40.968814399202955, -5.657254791523997],
+		  [40.96388208153445, -5.668452593434608], [40.96808270503584, -5.648748768919006],
+		  [40.96808270503584, -5.660807940207519], [40.97019646604829, -5.661776980757423],
+		  [40.97672701775423, -5.664863554361034], [40.964207300645114, -5.657541914649926],
+		  [40.973692152967175, -5.655244929642237], [40.971822389979536, -5.678322450888373]]
 
 
 async def main():
-    agent = Agent("agent_co2@gtirouter.dsic.upv.es", "secret")
-    await agent.start()
+	for i, c in enumerate(coords):
+		sensor = CO2Sensor(f"co2sensor{i}@gtirouter.dsic.upv.es", "secret")
+		sensor.latitude = c[0]
+		sensor.longitude = c[1]
+		sensor.sensor_id = i
+		sensor.start()
 
-    await spade.wait_until_finished(agent)
+	agent = Agent("agent_co2@gtirouter.dsic.upv.es", "secret")
+	agent.start()
+
+	#await spade.wait_until_finished(agent)
+
 
 if __name__ == '__main__':
-    spade.run(main())
-
+	asyncio.run(main())
