@@ -45,7 +45,7 @@ $.getJSON("/data.json", function (data) {
             cellSize: 10,
             exp: 2,
             max: 1,
-            gradient: {0: 'blue', 0.3: 'lime', 0.4: 'yellow', 0.7: 'red', 0.9: 'black'}
+            gradient: {0: 'blue', 0.15: 'lime', 0.35: 'yellow', 0.65: 'red', 1.0: 'black'}
         }).addTo(map);
 });
 

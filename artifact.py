@@ -24,7 +24,7 @@ class CO2Sensor(Artifact):
     def load_dataset_salamanca(self):
         with open(f"NODOS_CO2/{self.sensor_id}.json") as f:
             data = json.load(f)
-            self.time_serie = [[row["Fecha"], self.sensor_id, row["CO2"]] for row in data]
+            self.time_serie = [[row["Fecha"], self.sensor_id, row["CO2"]*1.5] for row in data]
         # sort list of lists by date
         self.time_serie.sort(key=lambda x: parse(x[0]))
 

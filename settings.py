@@ -86,7 +86,7 @@ if TARGET == "CANARIAS":
     }
 
 elif TARGET == "SALAMANCA":
-    MAX_CO2 = 1300
+    MAX_CO2 = 2000
     sensor_coords = {
         1: [40.96611815700082, -5.665447711944581],
         2: [40.9654103006922, -5.650899410247804],

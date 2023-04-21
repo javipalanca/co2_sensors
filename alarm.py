@@ -32,9 +32,9 @@ class AlarmAgent(ArtifactMixin, spade.agent.Agent):
         self.sensors[int(sensor_id)] = perception
         print(f"AlarmAgent: Sensor {sensor_id} perception: {perception}")
         if perception:
-            if perception > 700:
+            if perception > 1300:
                 alarm = "danger"
-            elif perception >= 450:
+            elif perception >= 700:
                 alarm = "warning"
             else:
                 alarm = "success"
